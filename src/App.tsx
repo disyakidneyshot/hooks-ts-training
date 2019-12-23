@@ -13,7 +13,8 @@ import {
 } from './utils/hooks/useWindowDimensions'
 import { PrivateRoute } from './utils/components/PrivateRoute'
 
-const NewsPage = React.lazy(() => import('./pages/news'))
+const NewsPage = React.lazy(() => import('./pages/news/news'))
+const PostPage = React.lazy(() => import('./pages/news/post'))
 const ProfilePage = React.lazy(() => import('./pages/profile'))
 const LoginPage = React.lazy(() => import('./pages/auth'))
 
@@ -76,6 +77,7 @@ const App: React.FC = (): JSX.Element => {
 						<Content>
 							<Router>
 								<NewsPage path='/news' />
+								<PostPage path='/news/post/:id' />
 								<PrivateRoute as={ProfilePage} path='/profile' />
 								<LoginPage path='/login' />
 								<Redirect from='*' to='/news' noThrow />

@@ -11,7 +11,7 @@ export const lightTheme: DefaultTheme = {
 	bsColor: '#00000029',
 	accent: '#7cb1ff',
 	error: '#e41e1e',
-	lightError: '#f59d9d',
+	lightError: '#d24a4a',
 	success: '#3cb958',
 }
 
@@ -26,6 +26,6 @@ export const darkTheme: DefaultTheme = {
 	bsColor: '#00000029',
 	accent: '#7cb1ff',
 	error: '#e41e1e',
-	lightError: '#f59d9d',
+	lightError: '#d24a4a',
 	success: '#3cb958',
 }

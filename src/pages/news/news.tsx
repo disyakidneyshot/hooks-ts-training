@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { connect } from 'react-redux'
-import { RootState } from '../services/reducers'
-import * as newsActions from '../services/actions/news/news'
-import { NewsState } from '../services/types/news'
-import { NewsList } from '../components/pages/news/NewsList'
-import { PageContainer } from '../components/layout/PageContainer'
+import { RootState } from '../../services/reducers'
+import * as newsActions from '../../services/actions/news/news'
+import { NewsState } from '../../services/types/news'
+import { NewsList } from '../../components/pages/news/NewsList'
+import { PageContainer } from '../../components/layout/PageContainer'
 
 type StateProps = NewsState
 

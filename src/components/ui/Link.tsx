@@ -1,8 +1,8 @@
 import React, { AnchorHTMLAttributes } from 'react'
 import { Link as RouterLink, LinkGetProps, LinkProps } from '@reach/router'
 
-const isActive = ({ isCurrent }: LinkGetProps) => {
-	return isCurrent ? { className: 'active' } : {}
+const isActive = ({ isPartiallyCurrent }: LinkGetProps) => {
+	return isPartiallyCurrent ? { className: 'active' } : {}
 }
 
 //TODO: need to figure out how to handle type of LinkProps with it

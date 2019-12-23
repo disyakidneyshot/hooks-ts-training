@@ -17,7 +17,7 @@ export function* getNews(
 		const payload = {
 			...articles.reduce((result: any, currVal: any) => {
 				const { source, publishedAt } = currVal as any
-				const id = `${source.name}|||${publishedAt}`
+				const id = `${source.name}${publishedAt}`
 				result.ids.push(id)
 				result.articles[id] = { id, ...currVal }
 				return result

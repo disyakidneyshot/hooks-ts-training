@@ -3,6 +3,7 @@ import { NewsElement } from '../../../services/types/news'
 import styled from 'styled-components'
 import { Img } from '../../ui/Img'
 import { NewsCardHeader } from './NewsCardHeader'
+import { navigate } from '@reach/router'
 
 const CardContainer = styled.div`
 	width: 100%;
@@ -24,6 +25,7 @@ const Wrapper = styled.div`
 	padding: 10px 20px;
 	background-color: ${props => props.theme.bgLight};
 	overflow: hidden;
+	cursor: pointer;
 `
 
 interface NewsCardProps {
@@ -33,11 +35,16 @@ interface NewsCardProps {
 export const NewsCard: React.FC<NewsCardProps &
 	HTMLAttributes<HTMLDivElement>> = (props): JSX.Element => {
 	const {
-		article: { title, urlToImage },
+		article: { title, urlToImage, id },
 	} = props
+
+	const readMoreHandler = () => {
+		navigate(`news/post/${id}`)
+	}
+
 	return (
 		<CardContainer style={props.style}>
-			<Wrapper>
+			<Wrapper onClick={readMoreHandler}>
 				<NewsCardHeader>{title}</NewsCardHeader>
 				<Img src={urlToImage} alt='image' style={{ maxHeight: '240px' }} />
 			</Wrapper>
