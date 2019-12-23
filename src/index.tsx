@@ -10,7 +10,7 @@ import { store } from './services/store'
 import './index.css'
 import { firebaseConfig } from './api/config'
 import { createFirestoreInstance } from 'redux-firestore'
-import { AuthIsReady } from './utils/AuthIsReady'
+import { AuthIsReady } from './utils/components/AuthIsReady'
 
 firebase.initializeApp(firebaseConfig)
 firebase.firestore()

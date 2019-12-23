@@ -4,14 +4,14 @@ import { Router, Redirect } from '@reach/router'
 import { NavHOC as NavBar } from './components/layout/Nav/NavBar'
 import { Content } from './components/layout/Content'
 import { FullPageSpinner } from './components/ui/Spinner/SpinnerFullPage'
-import ErrorBoundary from './utils/ErrorBoundary'
+import ErrorBoundary from './utils/errors/ErrorBoundary'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import * as availableThemes from './theme'
 import {
 	useWindowDimensions,
 	IWindowSize,
 } from './utils/hooks/useWindowDimensions'
-import { PrivateRoute } from './utils/privateRoute'
+import { PrivateRoute } from './utils/components/PrivateRoute'
 
 const NewsPage = React.lazy(() => import('./pages/news'))
 const ProfilePage = React.lazy(() => import('./pages/profile'))

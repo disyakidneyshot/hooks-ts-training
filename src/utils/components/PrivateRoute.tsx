@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react'
 import { RouteComponentProps, Redirect } from '@reach/router'
-import { useAuth } from './hooks/useAuth'
+import { useAuth } from '../hooks/useAuth'
 
 interface IPrivateRouteProps extends RouteComponentProps {
 	as: ComponentType
