@@ -13,7 +13,7 @@ import {
 } from './utils/hooks/useWindowDimensions'
 import { PrivateRoute } from './utils/components/PrivateRoute'
 
-const NewsPage = React.lazy(() => import('./pages/news/news'))
+const NewsPage = React.lazy(() => import('./pages/news/feed'))
 const PostPage = React.lazy(() => import('./pages/news/post'))
 const ProfilePage = React.lazy(() => import('./pages/profile'))
 const LoginPage = React.lazy(() => import('./pages/auth'))

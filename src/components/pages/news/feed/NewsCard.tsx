@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
-import { NewsElement } from '../../../services/types/news'
+import { NewsElement } from '../../../../services/types/news'
 import styled from 'styled-components'
-import { Img } from '../../ui/Img'
+import { Img } from '../../../ui/Img'
 import { NewsCardHeader } from './NewsCardHeader'
 import { navigate } from '@reach/router'
 

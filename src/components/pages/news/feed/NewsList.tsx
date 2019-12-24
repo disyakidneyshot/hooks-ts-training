@@ -2,10 +2,10 @@ import React from 'react'
 import { FixedSizeList as List } from 'react-window'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import InfiniteLoader from 'react-window-infinite-loader'
-import { NewsElement } from '../../../services/types/news'
+import { NewsElement } from '../../../../services/types/news'
 import { NewsCard } from './NewsCard'
 import { ThemeContext } from 'styled-components'
-import { Spinner } from '../../ui/Spinner/Spinner'
+import { Spinner } from '../../../ui/Spinner/Spinner'
 
 interface NewsListProps {
 	articles: { [key: string]: NewsElement }
