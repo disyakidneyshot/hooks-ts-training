@@ -14,6 +14,8 @@ const TabsContainer = styled.div`
 	align-items: flex-end;
 `
 
+TabsContainer.displayName = 'TabsContainer'
+
 interface ITabProps {
 	active?: boolean
 	separator: boolean
@@ -54,6 +56,8 @@ const Tab = styled.div<ITabProps>`
 			color: ${props.theme.accent};
 		`};
 `
+
+Tab.displayName = 'Tab'
 
 interface ITabsProps {
 	tabs: ITabsList

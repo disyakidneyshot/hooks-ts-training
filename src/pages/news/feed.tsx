@@ -6,6 +6,7 @@ import * as newsActions from '../../services/actions/news/news'
 import { NewsState } from '../../services/types/news'
 import { NewsList } from '../../components/pages/news/feed/NewsList'
 import { PageContainer } from '../../components/layout/PageContainer'
+import { Spinner } from '../../components/ui/Spinner/Spinner'
 
 type StateProps = NewsState
 
@@ -17,7 +18,7 @@ type DispatchProps = {
 type Props = RouteComponentProps & StateProps & DispatchProps
 
 const NewsPage: React.SFC<Props> = (props): JSX.Element => {
-	const { getNews, clearNews, total, ids, articles, loading } = props
+	const { getNews, total, ids, articles, loading } = props
 
 	const didMount = React.useRef(false)
 	const [page, setPage] = React.useState(1)
@@ -32,12 +33,6 @@ const NewsPage: React.SFC<Props> = (props): JSX.Element => {
 		getNews({ page: Number(page) })
 	}, [page])
 
-	React.useEffect(() => {
-		return () => {
-			clearNews()
-		}
-	}, [])
-
 	const loadMore = async (
 		startIndex: number,
 		stopIndex: number
@@ -48,7 +43,7 @@ const NewsPage: React.SFC<Props> = (props): JSX.Element => {
 	return (
 		<PageContainer>
 			{!didMount ? (
-				<div>Loading...</div>
+				<Spinner />
 			) : (
 				<NewsList
 					articles={articles}

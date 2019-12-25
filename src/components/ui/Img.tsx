@@ -8,6 +8,8 @@ const StyledImg = styled.img`
 	background-color: ${props => props.theme.bgLight};
 `
 
+StyledImg.displayName = 'StyledIMG'
+
 export const Img: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
 	props
 ): JSX.Element => {

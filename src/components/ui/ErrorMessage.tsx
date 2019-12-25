@@ -13,3 +13,5 @@ export const ErrorMessage = styled.div`
 	background-color: ${props => props.theme.lightError};
 	color: ${props => props.theme.text};
 `
+
+ErrorMessage.displayName = 'ErrorMessage'

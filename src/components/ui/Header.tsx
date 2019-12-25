@@ -26,6 +26,8 @@ export const StyledHeader = styled.h2`
 	}
 `
 
+StyledHeader.displayName = 'StyledHeader'
+
 interface HeaderProps {
 	height: number | string
 }
