@@ -35,11 +35,11 @@ interface NewsCardProps {
 export const NewsCard: React.FC<NewsCardProps &
 	HTMLAttributes<HTMLDivElement>> = (props): JSX.Element => {
 	const {
-		article: { title, urlToImage, id },
+		article: { title, urlToImage, url },
 	} = props
 
 	const readMoreHandler = () => {
-		navigate(`news/post/${id}`)
+		window.open(url)
 	}
 
 	return (

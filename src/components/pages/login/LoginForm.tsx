@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../services/reducers'
 import { validators, combineValidators } from '../../../utils/validations'
 import { ErrorMessage } from '../../ui/ErrorMessage'
+import { GAuth } from './GAuth'
 
 const LFSpinnerWrapper = styled.div`
 	width: auto;
@@ -91,7 +92,7 @@ export const LoginForm: React.FC = (): JSX.Element => {
 										validators.minLength(9)
 									)}
 								/>
-								<FormElement mt='l' mb='none'>
+								<FormElement margin='l'>
 									<Button type='submit' disabled={loading}>
 										{activeTab === 'signIn' ? 'Войти' : 'Подтвердить'}
 									</Button>
@@ -99,6 +100,7 @@ export const LoginForm: React.FC = (): JSX.Element => {
 							</form>
 						)}
 					</Form>
+					<GAuth />
 				</Panel.Content>
 			</Panel>
 			<LFSpinnerWrapper>{loading && <Spinner />}</LFSpinnerWrapper>

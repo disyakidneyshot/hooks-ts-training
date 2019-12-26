@@ -39,7 +39,7 @@ export function* watchSignUp(): SagaIterator {
 	yield takeEvery(types.AUTH_SIGNUP_REQUEST, signUp)
 }
 
-function* authorize(payload: LoginParams): SagaIterator {
+function* loginWithEmailPW(payload: LoginParams): SagaIterator {
 	try {
 		yield* typedCall(api.loginWithPassword, payload)
 		yield put(loginActions.resolveLogin())
@@ -48,32 +48,47 @@ function* authorize(payload: LoginParams): SagaIterator {
 	} finally {
 		if (yield cancelled()) {
 			yield put(
-				loginActions.rejectLogin(new Error('authorize task was cancelled'))
+				loginActions.rejectLogin(
+					new Error('loginWithEmailPW task was cancelled')
+				)
 			)
 		}
 	}
 }
 
+function* loginWithGoogle(): SagaIterator {
+	try {
+		yield* typedCall(api.signInWithGoogle)
+		yield put(loginActions.resolveLogin())
+	} catch (err) {
+		yield putError(loginActions.rejectLogin, err)
+	}
+}
+
 export function* authFlow(): SagaIterator {
 	while (true) {
-		// TODO: need to figure out why i cannot pass action creator to take() and make it work the right way
 		const loginAction = yield take([
 			types.AUTH_LOGIN_REQUEST,
+			types.AUTH_LOGIN_GOOGLE_REQUEST,
 			'@@reactReduxFirebase/SET_PROFILE',
 		])
-		if (loginAction.type === types.AUTH_LOGIN_REQUEST) {
-			const { payload: loginPayload }: { payload: LoginParams } = loginAction
-			const task = yield fork(authorize, loginPayload)
-			const action = yield take([
-				types.AUTH_LOGIN_REJECT,
-				types.AUTH_LOGOUT_REQUEST,
-			])
-			if (action.type === types.AUTH_LOGOUT_REQUEST) {
-				yield cancel(task)
-				yield* typedCall(logout)
-			}
-		} else {
-			yield take(types.AUTH_LOGOUT_REQUEST)
+		let taskToCancel = undefined
+		switch (loginAction.type) {
+			case types.AUTH_LOGIN_REQUEST:
+				const { payload: loginPayload }: { payload: LoginParams } = loginAction
+				taskToCancel = yield fork(loginWithEmailPW, loginPayload)
+				break
+			case types.AUTH_LOGIN_GOOGLE_REQUEST:
+				taskToCancel = yield fork(loginWithGoogle)
+				break
+			default:
+		}
+		const action = yield take([
+			types.AUTH_LOGIN_REJECT,
+			types.AUTH_LOGOUT_REQUEST,
+		])
+		if (action.type === types.AUTH_LOGOUT_REQUEST) {
+			taskToCancel ? yield cancel(taskToCancel) : null
 			yield* typedCall(logout)
 		}
 	}

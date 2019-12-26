@@ -1,7 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../services/reducers'
 import { uid } from '../../services/types/auth'
-import { login as loginAction } from '../../services/actions/auth/login'
+import {
+	login as loginAction,
+	signInWithGoogle as signInWGoogleAction,
+} from '../../services/actions/auth/login'
 import { logout as logoutAction } from '../../services/actions/auth/logout'
 import { signUp as signUpAction } from '../../services/actions/auth/signUp'
 import { LoginParams, SignUpParams } from '../../api/auth'
@@ -26,6 +29,7 @@ export interface IUseAuthProviderReturnType extends IUseAuthReturnType {
 	login: (params: LoginParams) => ReturnType<typeof loginAction>
 	logout: () => ReturnType<typeof logoutAction>
 	signUp: (params: SignUpParams) => ReturnType<typeof signUpAction>
+	signInWGoogle: () => ReturnType<typeof signInWGoogleAction>
 }
 
 export const useAuthProvider = (): IUseAuthProviderReturnType => {
@@ -38,5 +42,7 @@ export const useAuthProvider = (): IUseAuthProviderReturnType => {
 
 	const signUp = (params: SignUpParams) => dispatch(signUpAction(params))
 
-	return { uid, login, logout, signUp, error, loading }
+	const signInWGoogle = () => dispatch(signInWGoogleAction())
+
+	return { uid, login, logout, signUp, error, loading, signInWGoogle }
 }

@@ -18,7 +18,7 @@ type DispatchProps = {
 type Props = RouteComponentProps & StateProps & DispatchProps
 
 const NewsPage: React.SFC<Props> = (props): JSX.Element => {
-	const { getNews, total, ids, articles, loading } = props
+	const { getNews, clearNews, total, ids, articles, loading } = props
 
 	const didMount = React.useRef(false)
 	const [page, setPage] = React.useState(1)
@@ -32,6 +32,12 @@ const NewsPage: React.SFC<Props> = (props): JSX.Element => {
 		}
 		getNews({ page: Number(page) })
 	}, [page])
+
+	React.useEffect(() => {
+		return () => {
+			clearNews()
+		}
+	}, [])
 
 	const loadMore = async (
 		startIndex: number,

@@ -1,3 +1,4 @@
+import { GAuthProvider } from './config'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 
@@ -21,6 +22,10 @@ export const signUpWithPassword = async ({
 	password,
 }: SignUpParams): Promise<firebase.auth.UserCredential> => {
 	return await firebase.auth().createUserWithEmailAndPassword(email, password)
+}
+
+export const signInWithGoogle = async (): Promise<firebase.auth.UserCredential> => {
+	return await firebase.auth().signInWithPopup(GAuthProvider)
 }
 
 export const logout = async (): Promise<void> => {

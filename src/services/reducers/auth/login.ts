@@ -12,6 +12,12 @@ export const loginModule = (
 				loading: true,
 				error: undefined,
 			}
+		case types.AUTH_LOGIN_GOOGLE_REQUEST:
+			return {
+				...state,
+				loading: true,
+				error: undefined,
+			}
 		case types.AUTH_LOGIN_RESOLVE:
 			return {
 				...state,
@@ -20,8 +26,8 @@ export const loginModule = (
 		case types.AUTH_LOGIN_REJECT:
 			return {
 				...state,
-				loading: false,
 				error: action.payload,
+				loading: false,
 			}
 		default:
 			return state

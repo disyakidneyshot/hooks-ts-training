@@ -3,6 +3,7 @@ export const AUTH_LOGOUT_MODULE = 'logout'
 export const AUTH_SIGNUP_MODULE = 'signUp'
 
 export const AUTH_LOGIN_REQUEST = `auth/login/request`
+export const AUTH_LOGIN_GOOGLE_REQUEST = `auth/login/googleRequest`
 export const AUTH_LOGIN_RESOLVE = `auth/login/resolve`
 export const AUTH_LOGIN_REJECT = `auth/login/reject`
 

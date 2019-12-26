@@ -1,6 +1,5 @@
 import * as types from './authActionTypes'
 import { LoginParams } from '../../../api/auth'
-import { AuthState } from '../../types/auth'
 
 export const login = (payload: LoginParams) =>
 	<const>{
@@ -8,6 +7,8 @@ export const login = (payload: LoginParams) =>
 		payload,
 	}
 
+export const signInWithGoogle = () =>
+	<const>{ type: types.AUTH_LOGIN_GOOGLE_REQUEST }
 export const resolveLogin = () =>
 	<const>{
 		type: types.AUTH_LOGIN_RESOLVE,
