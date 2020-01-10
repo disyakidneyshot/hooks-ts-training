@@ -11,9 +11,9 @@ import './index.css'
 import { firebaseConfig } from './api/config'
 import { createFirestoreInstance } from 'redux-firestore'
 import { AuthIsReady } from './utils/components/AuthIsReady'
+import { register } from './serviceWorker'
 
 firebase.initializeApp(firebaseConfig)
-firebase.firestore()
 
 const rrfConfig = {
 	userProfile: 'users',
@@ -37,3 +37,5 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById('root')
 )
+
+register()

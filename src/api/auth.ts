@@ -29,5 +29,7 @@ export const signInWithGoogle = async (): Promise<firebase.auth.UserCredential> 
 }
 
 export const logout = async (): Promise<void> => {
-	return await firebase.auth().signOut()
+	await firebase.auth().signOut()
+	// this one fixes react-redux-firebase signOut error
+	return await (firebase as any).logout()
 }
