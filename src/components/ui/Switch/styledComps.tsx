@@ -33,8 +33,8 @@ interface ISwitchIconProps {
 export const SwitchIcon = styled.div<ISwitchIconProps>`
 	position: absolute;
 	top: 50%;
-	width: 13px;
-	height: 12px;
+	width: 11px;
+	height: 11px;
 	user-select: none;
 	font-size: 10px;
 	line-height: normal;
@@ -42,9 +42,9 @@ export const SwitchIcon = styled.div<ISwitchIconProps>`
 	${props =>
 		props.side === 'left'
 			? css`
-					left: 3px;
+					left: 4px;
 			  `
 			: css`
-					right: 3px;
+					right: 4px;
 			  `}
 `
