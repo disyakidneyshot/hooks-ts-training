@@ -12,6 +12,7 @@ import {
 	IWindowSize,
 } from './utils/hooks/useWindowDimensions'
 import { PrivateRoute } from './utils/components/PrivateRoute'
+import { AuthIsReady } from './utils/components/AuthIsReady'
 
 const NewsPage = React.lazy(() => import('./pages/news/feed'))
 const ProfilePage = React.lazy(() => import('./pages/profile'))
@@ -70,18 +71,20 @@ const App: React.FC = (): JSX.Element => {
 		<ErrorBoundary>
 			<AppContext.Provider value={{ size, changeTheme }}>
 				<ThemeProvider theme={theme}>
-					<NavBar />
-					<GlobalStyle />
-					<React.Suspense fallback={<FullPageSpinner />}>
-						<Content>
-							<Router>
-								<NewsPage path='/news' />
-								<PrivateRoute as={ProfilePage} path='/profile' />
-								<LoginPage path='/login' />
-								<Redirect from='*' to='/news' noThrow />
-							</Router>
-						</Content>
-					</React.Suspense>
+					<AuthIsReady>
+						<NavBar />
+						<GlobalStyle />
+						<React.Suspense fallback={<FullPageSpinner />}>
+							<Content>
+								<Router>
+									<NewsPage path='/news' />
+									<PrivateRoute as={ProfilePage} path='/profile' />
+									<LoginPage path='/login' />
+									<Redirect from='*' to='/news' noThrow />
+								</Router>
+							</Content>
+						</React.Suspense>
+					</AuthIsReady>
 				</ThemeProvider>
 			</AppContext.Provider>
 		</ErrorBoundary>
