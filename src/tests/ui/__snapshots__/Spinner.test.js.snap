@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: <Spinner /> renders without crashing 1`] = `
+<styled.div
+  size={23}
+>
+  <styled.div
+    size={23}
+  >
+    <Styled(styled.div)
+      size={23}
+    />
+    <Styled(styled.div)
+      size={23}
+    />
+    <Styled(styled.div)
+      size={23}
+    />
+  </styled.div>
+</styled.div>
+`;

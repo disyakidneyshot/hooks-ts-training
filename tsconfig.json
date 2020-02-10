@@ -21,6 +21,6 @@
   },
   "include": [
     "src",
-    "node_modules/@firebase/*-types"
+    "node_modules/@firebase/*-types", "src/setupTests.js"
   ]
 }
